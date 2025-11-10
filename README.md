@@ -1,73 +1,206 @@
-Enjoyable is an application for Mac OS X which allows you to use
-controller inputs like a mouse or keyboard.
+# Enjoyable Silicon
 
-If you've ever played a video game which only supports mouse and
-keyboard input but you want to use a joystick or gamepad, then
-Enjoyable will help you do that.
+A modern macOS application for mapping game controllers to keyboard and mouse input.  
+**Native Apple Silicon (ARM64) support** with **universal binaries** and **dark mode**.
 
-Enjoyable supports
+[![Platform](https://img.shields.io/badge/platform-macOS%2015%2B-blue)](https://github.com/pedroh77/enjoyable-silicon)
+[![Architecture](https://img.shields.io/badge/arch-ARM64%20|%20Intel-green)](https://github.com/pedroh77/enjoyable-silicon/releases)
+[![License](https://img.shields.io/badge/license-MIT-orange)](https://github.com/pedroh77/enjoyable-silicon#license)
 
- * Mapping gamepad and joystick buttons to keyboard and mouse actions
- * Fine control over mouse movement and scrolling using analog axis
-   inputs
- * Automatic and dynamic switching between different input mappings
- * Downloading and sharing input presets for different applications
- * Modern OS X features like resume and automatic termination
+---
 
-Enjoyable is free software written by Joe Wreschnig with minor additions
-by Matt Millett, Sam Deane and Ruotger Deecke, and is based on the Enjoy codebase written by [Yifeng Huang](http://nongraphical.com)
-and [Sam McCall](http://abstractable.net/enjoy/).
+## Why This Fork?
 
+While several Enjoyable forks exist, **enjoyable-silicon** is the only one offering:
 
-# How to use
-1. Download the zip [here](https://github.com/millett/enjoyable/raw/master/Enjoyable3.zip) and unzip it. Enjoyable.app should be inside.
-2. Go to System Preferences -> Security & Privacy -> Accessibility, then click the (+) button, select the app (Enjoyable), and specifically allow permissions under "allow this app to control your computer".
-3. press buttons on your controller and see them light up the app. Set up your key mapping.
-4. press the little arrow in the top right corner and now, when you press buttons on your controller, it should act like you pressed those buttons on the computer!
+✅ **Pre-built Universal Binaries** (ARM64 + Intel)  
+✅ **Native Apple Silicon** - No Rosetta required  
+✅ **Xcode 26 Compatible** - Builds on latest macOS Sequoia  
+✅ **Modern UI** - Dark mode support, Big Sur+ style icons  
+✅ **Maintained** - Regular updates and bug fixes  
 
-### New in 1.4
+## What is Enjoyable?
 
-- Support for Apple Silicon and Big Sur.
-- Enjoyable stays in light mode even if the system is in dark mode.
-- Unfortunately some older versions of macOS needed to be dropped. (is 10.13+ now)
+Enjoyable is a macOS application that allows you to use game controllers (joysticks, gamepads) as keyboard and mouse input. Perfect for games that don't support controllers natively.
 
-### New in 1.3.1alpha
-Add functionality for any other random buttons/doohickeys on your controller. (Treats them as buttons)
-(Tested only with the Xbox One trigger so far!)
-- no promises if this crashes your stuff, but it works ok for me!
- - I have not experienced any weird side effects yet...
- 
-### New in 1.3
+---
 
-Added in 1.3 is support for a "centered" mode for mouse move.
+## 📦 Download & Installation
 
-In this mode, rather than nudging the mouse position left/right/up/down, tan analog input can be
-used to set the absolute location of the mouse as a deviation from the centre of the screen. The further
-the analog input is from the neutral point, the further away from the centre of the screen the mouse
-gets placed. 
+### Pre-built Binary (Recommended)
 
-This is intended to be a better solution for games such as Elite: Dangerous which can map the mouse
-to yaw/roll/pitch, and where it's valuable to be able to have the mouse snap back to a central point
-when the input is released.
+**[Download Enjoyable-Universal.dmg](https://github.com/pedroh77/enjoyable-silicon/releases/latest/download/Enjoyable-Universal.dmg)** (ARM64 + Intel)
 
-## How to Use
+1. Download and open the DMG
+2. Drag Enjoyable to Applications
+3. **Right-click** Enjoyable and select **"Open"** (first time only)
+4. Grant Accessibility permissions when prompted
 
-To start, just press a button on your joystick or gamepad, then press
-the key you want to map it for. Then press the ▶ button and switch
-back to your game. For more details, Enjoyable has a in-application
-manual available in Help Viewer via `⌘?`.
+> ⚠️ **Note:** This app is unsigned (no Apple Developer certificate). See [Security Notes](#-security-notes) below.
 
-## Requirements
+### Building from Source
 
-* Mac OS X 10.13+
-* One or more HID-compatible (e.g. USB or Bluetooth) input devices
+Requirements:
+- Xcode 26.0 or later
+- macOS 15.0+ SDK
 
-## License
+```bash
+git clone https://github.com/pedroh77/enjoyable-silicon.git
+cd enjoyable-silicon
+xcodebuild -project Enjoyable.xcodeproj -scheme Enjoyable -configuration Release
 
-Copyright 2020 Matt Millet, Ruotger Deecke
-		  2013 Joe Wreschnig  
-          2012 Yifeng Huang  
-          2009 Sam McCall, University of Otago
+# Or use the build script:
+./build_and_package.sh
+```
+
+---
+
+## 🎮 Quick Start
+
+1. **Launch Enjoyable** from Applications
+2. **Connect your controller** (USB or Bluetooth)
+3. **Press a button** on your controller - it will appear in the list
+4. **Map it** to a keyboard key or mouse action
+5. Click the **▶ button** in the toolbar to activate
+6. **Switch to your game** and start playing!
+
+For detailed instructions, press **⌘?** in Enjoyable to open the built-in manual.
+
+---
+
+## ✨ What's New in This Fork
+
+### Technical Improvements
+- ✅ **Xcode 26 Compatibility**: Fixed compilation errors with macOS 15 SDK (CoreGraphics headers)
+- ✅ **Universal Binary**: Native support for both Apple Silicon (ARM64) and Intel (x86_64)
+- ✅ **Dark Mode Support**: Full system appearance integration (removed forced light mode)
+- ✅ **Adaptive Menu Bar Icon**: Icons now properly adapt to light/dark menu bars using template mode
+
+### Visual Improvements
+- ✅ **Modern App Icon**: High-resolution icon following Big Sur+ design language
+  - Based on the original Tango icon set (public domain)
+  - Modernized version from [macOSicons.com](https://macosicons.com)
+  - Uploaded by user "databrother" on 24/06/2025
+  - Thanks to databrother for making this beautiful icon available!
+
+---
+
+## 🔒 Security Notes
+
+### Why is the app unsigned?
+
+Creating signed macOS apps requires an **Apple Developer Program** membership ($99/year). Since this is a free, open-source project, the binary is **unsigned**.
+
+### First Launch Instructions
+
+macOS Gatekeeper will block unsigned apps by default. To run Enjoyable:
+
+**Method 1: Right-click Open**
+1. **Right-click** (or Control-click) on Enjoyable.app
+2. Select **"Open"**
+3. Click **"Open"** in the security dialog
+
+**Method 2: Terminal Command**
+```bash
+xattr -cr /Applications/Enjoyable.app
+```
+
+**Method 3: System Settings**
+1. Try to open Enjoyable normally
+2. Go to **System Settings** → **Privacy & Security**
+3. Click **"Open Anyway"** next to the Enjoyable warning
+
+### Accessibility Permissions
+
+Enjoyable needs **Accessibility** permissions to simulate keyboard/mouse input.
+
+**If not prompted automatically:**
+1. Open **System Settings** → **Privacy & Security** → **Accessibility**
+2. Click the **(+)** button
+3. Navigate to and select **Enjoyable.app**
+4. Enable the checkbox
+
+### Self-Signing (Optional)
+
+For a smoother experience, you can create an ad-hoc signature yourself:
+
+```bash
+codesign --force --deep --sign - /Applications/Enjoyable.app
+```
+
+This creates a local signature that macOS will trust on your specific Mac.
+
+---
+
+## 🐛 Known Issues
+
+- Menu bar icons may appear in the wrong color until you restart the app after granting permissions
+- Some Bluetooth controllers may require pairing via System Settings before Enjoyable can detect them
+- On first launch, you may need to open the app twice for Accessibility permissions to take effect
+
+---
+
+## 🛠️ Development
+
+### Project Structure
+
+```
+enjoyable-silicon/
+├── Classes/              # Core application classes
+├── Categories/           # Objective-C category extensions
+├── Resources/            # Icons, UI files, Help documentation
+├── Other Sources/        # Precompiled headers, main.m
+├── Enjoyable.xcodeproj/  # Xcode project file
+└── build_and_package.sh  # Build and packaging script
+```
+
+### Building
+
+```bash
+# Debug build
+xcodebuild -project Enjoyable.xcodeproj \
+           -scheme Enjoyable \
+           -configuration Debug
+
+# Release build with packaging
+./build_and_package.sh
+```
+
+### Contributing
+
+Pull requests are welcome! Please ensure:
+- Code compiles on **Xcode 26+**
+- Maintains **Universal Binary** support (ARM64 + Intel)
+- Follows existing code style
+- Includes appropriate comments for complex logic
+
+---
+
+## 📜 Credits & License
+
+### This Fork
+Modernizations, Apple Silicon optimization, and Xcode 26 compatibility by **Pedro Albuquerque** (pedroh77)
+
+### Original Authors
+- **Joe Wreschnig** - Original Enjoyable author
+- **Ruotger Deecke** (roddi) - Apple Silicon support fork
+- **Matt Millett** - Additional features
+- **Sam Deane** - Contributions
+- Based on **Enjoy** by Yifeng Huang and Sam McCall
+
+### Icon Credits
+- **Original icon:** Tango icon set (public domain)
+- **Modernized version:** From [macOSicons.com](https://macosicons.com)
+- **Uploaded by:** "databrother" (24/06/2025)
+- **Formatted for:** Big Sur+ design language
+
+### License
+
+Copyright 2025 Pedro Albuquerque  
+Copyright 2020 Matt Millett, Ruotger Deecke  
+Copyright 2013 Joe Wreschnig  
+Copyright 2012 Yifeng Huang  
+Copyright 2009 Sam McCall, University of Otago
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -88,4 +221,44 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-The joystick icon is from the Tango icon set and is public domain.
+---
+
+## 🔗 Links
+
+- **Releases**: [Download latest version](https://github.com/pedroh77/enjoyable-silicon/releases)
+- **Issues**: [Report bugs or request features](https://github.com/pedroh77/enjoyable-silicon/issues)
+- **Original Project**: [roddi/enjoyable](https://github.com/roddi/enjoyable)
+
+---
+
+## ❓ FAQ
+
+### Why create a separate repository instead of a fork?
+
+Forks on GitHub are hard to discover in search results. By creating an independent repository with a descriptive name (**enjoyable-silicon**), users can more easily find a version that:
+- Provides ready-to-use binaries
+- Has native Apple Silicon support
+- Features a modern, maintained codebase
+
+### Will this work on older macOS versions?
+
+This build targets **macOS 15 (Sequoia)** and later. For older systems, you may need to build from source with an older Xcode version, or use one of the original Enjoyable versions.
+
+### Can I use this with any game?
+
+Yes! Enjoyable works system-wide. It translates controller input to keyboard/mouse events at the OS level, so it works with any application - games, emulators, creative software, etc.
+
+### My controller isn't detected. What should I do?
+
+1. **USB controllers**: Try a different USB port
+2. **Bluetooth controllers**: Pair via System Settings first
+3. **Check compatibility**: Some controllers may need additional drivers
+4. **Console controllers**: PS4/PS5/Xbox controllers work great!
+
+### Does this support multiple controllers?
+
+Yes! You can connect and map multiple controllers simultaneously.
+
+---
+
+**Enjoy your gaming! 🎮**
