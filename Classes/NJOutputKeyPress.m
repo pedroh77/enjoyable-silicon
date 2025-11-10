@@ -1,4 +1,6 @@
 //
+#import <CoreGraphics/CoreGraphics.h>
+//
 //  NJOutputKeyPress.m
 //  Enjoy
 //

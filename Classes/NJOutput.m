@@ -4,6 +4,7 @@
 //
 //  Created by Sam McCall on 5/05/09.
 //
+#import <CoreGraphics/CoreGraphics.h>
 
 #import "NJOutput.h"
 

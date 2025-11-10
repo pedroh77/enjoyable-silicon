@@ -5,6 +5,7 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import <IOKit/hid/IOHIDLib.h>
+    #import <CoreGraphics/CoreGraphics.h>
 
     #import "NSError+Description.h"
     #import "NSMenu+RepresentedObjectAccessors.h"

@@ -5,6 +5,7 @@
 //  Created by Yifeng Huang on 7/28/12.
 //
 
+#import <CoreGraphics/CoreGraphics.h>
 #import "NJOutputMouseScroll.h"
 
 @implementation NJOutputMouseScroll
